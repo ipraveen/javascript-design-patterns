@@ -1,1 +1,1 @@
-import  "./singleton-pattern";
+console.log("Welcome to JavaScript Design Pattern Course!")
