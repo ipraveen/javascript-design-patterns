@@ -1,1 +1,2 @@
-import  "./singleton-pattern";
+// import './observer';
+// import  "./singleton-pattern";
