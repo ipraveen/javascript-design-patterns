@@ -5,13 +5,8 @@ import { StockMarket } from './StockMarket';
 const market = new StockMarket();
 
 // Clients
-const stockNow = new StockNow();
-const forecast = new StockForecast();
-
-// Observers
-market.addObserver(stockNow);
-market.addObserver(forecast);
-
+new StockNow();
+new StockForecast();
 
 // App Logic
 market.run();

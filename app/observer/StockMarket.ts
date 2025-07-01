@@ -1,4 +1,5 @@
-import type { Observer, Stock } from './types';
+import { EventEmitter } from './EventEmitter';
+import type { Stock } from './types';
 
 const data = [
     {
@@ -8,22 +9,13 @@ const data = [
 ];
 
 export class StockMarket {
-    private observers: Observer<Stock>[] = [];
-
-    public addObserver(observer: Observer<Stock>) {
-        this.observers.push(observer);
-    }
-
     public run() {
         let idx = 0;
         const [{ name, rates }] = data;
 
         const ref = setInterval(() => {
             const rate = rates[idx];
-            console.log('Publishing: ', { name, rate });
-            this.observers.forEach((observer) => {
-                observer.update({ name, rate });
-            });
+            EventEmitter.publish<Stock>('STOCK_MARKET_UPDATE', { name, rate });
 
             idx++;
             if (idx === 5) {
